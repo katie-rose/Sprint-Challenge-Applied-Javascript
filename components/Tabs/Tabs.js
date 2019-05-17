@@ -1,10 +1,12 @@
 class TabLink {
   constructor(tabElement) {
     // assign this.tabElement to the tabElement DOM reference
+
     this.tabElement = tabElement;
 
     // Get the `data-tab` value from this.tabElement and store it here
-    this.tabData = this.element.dataset.tab;
+
+    this.tabData = this.tabElement.dataset.tab;
 
     // We need to find out if a user clicked 'all' cards or a specific category.  Follow the instructions below to accomplish this task:
 
@@ -17,10 +19,10 @@ class TabLink {
     }
 
     // Map over the newly converted NodeList we just created in our if statement above. Convert each this.cards element into a new instance of the TabCard class. Pass in a card object to the TabCard class.
-    this.cards = Array.from(this.cards).map(card => new TabCard(card));
 
-    // Add a click event that invokes this.selectTab
-    this.element.addEventListener("click", () => {
+    this.cards = Array.from(this.cards).map(card => new TabCard(card));
+    // Add a click event that invokes selectTab
+    this.tabElement.addEventListener("click", () => {
       this.selectTab();
     });
   }
@@ -42,24 +44,23 @@ class TabLink {
       card.style.display = "none";
     });
 
-    // Add a class of ".active-tab" to this.tabElement
-    this.element.classList.add("active-tab");
+      // Add a class of ".active-tab" to this.tabelement
+    this.tabElement.classList.add("active-tab");
 
-    // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class. Just un-comment the code and study what is happening here.
+    // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class, nothing to update here
     this.cards.forEach(card => card.selectCard());
   }
 }
 
 class TabCard {
-  constructor(cardElement){
+  constructor(cardElement) {
     // Assign this.cardElement to the cardElement DOM reference
     this.cardElement = cardElement;
   }
-  selectCard(){
+  selectCard() {
     // Update the style of this.cardElement to display = "flex"
-    this.element.style.display = "flex";
+    this.cardElement.style.display = "flex";
   }
-
 }
 
 // START HERE: 
